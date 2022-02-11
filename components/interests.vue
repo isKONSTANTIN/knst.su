@@ -12,8 +12,10 @@
         <div class="badge">Proxmox</div>
         <div class="badge">LXC</div>
         <div class="badge">Nginx</div>
-        <div class="badge">LWJGL</div>
+        <div class="badge">Nuxt</div>
+        <div class="badge">PWA</div>
         <div class="badge">OpenGL</div>
+        <div class="badge">LWJGL</div>
         <div class="badge">Java</div>
       </div>
     </div>

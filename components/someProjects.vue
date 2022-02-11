@@ -6,6 +6,15 @@
       </h2>
 
       <div class="flex flex-wrap justify-center">
+        <a href="https://ms.knst.su" class="card shadow-xl image-full m-1 transition transform hover:scale-105 hover:shadow-lg" style="max-width: 14rem">
+          <figure>
+            <img style="object-fit: contain" src="/MoneySaver.png">
+          </figure>
+          <div class="justify-end card-body">
+            <h2 class="card-title">MoneySaver</h2>
+            <p>Web application for home financial accounting. Has various charts, plans, repeat transactions and more.</p>
+          </div>
+        </a>
         <a href="https://lab.knrg.su/isKONSTANTIN/LokUtils" class="card shadow-xl image-full m-1 transition transform hover:scale-105 hover:shadow-lg" style="max-width: 14rem">
           <figure>
             <img style="object-fit: contain" src="/LokUtils.png">

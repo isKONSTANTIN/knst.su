@@ -4,10 +4,10 @@
 
     <div class="content">
       <div class="hiddenPanel">
-        <about-me class="row-span-3"></about-me>
+        <about-me class="row-span-2"></about-me>
         <interests></interests>
         <some-interesting></some-interesting>
-        <some-projects class="row-span-2 xl:col-span-2"></some-projects>
+        <some-projects class="row-span-3 xl:col-span-2"></some-projects>
       </div>
 
     </div>

@@ -5,7 +5,7 @@
         Something Interesting
       </h2>
 
-      <div class="flex flex-wrap justify-center">
+      <div class="flex flex-wrap justify-center items-center h-full">
         <a href="https://hil.su" class="badge">hil.su</a>
         <a href="https://medals.m-k.mx/" class="badge">medals.m-k.mx</a>
         <a href="https://knrg.su" class="badge">knrg.su</a>
