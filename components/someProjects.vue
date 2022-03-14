@@ -6,7 +6,7 @@
       </h2>
 
       <div class="flex flex-wrap justify-center">
-        <a href="https://ms.knst.su" class="card shadow-xl image-full m-1 transition transform hover:scale-105 hover:shadow-lg" style="max-width: 14rem">
+        <a href="https://monsave.su" class="card shadow-xl image-full m-1 transition transform hover:scale-105 hover:shadow-lg" style="max-width: 14rem">
           <figure>
             <img style="object-fit: contain" src="/MoneySaver.png">
           </figure>
