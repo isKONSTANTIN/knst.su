@@ -6,6 +6,7 @@
       </h2>
 
       <div class="flex flex-wrap justify-center">
+        <div class="badge">Cryptocurrencies</div>
         <div class="badge">Linux</div>
         <div class="badge">Gnome</div>
         <div class="badge">Gitlab</div>

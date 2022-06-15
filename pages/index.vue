@@ -9,7 +9,6 @@
         <some-interesting></some-interesting>
         <some-projects class="row-span-3 xl:col-span-2"></some-projects>
       </div>
-
     </div>
   </div>
 </template>
