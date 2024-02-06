@@ -6,17 +6,19 @@
       </h2>
 
       <div class="flex flex-wrap justify-center">
-        <a href="https://monsave.su" class="card shadow-xl image-full m-1 transition transform hover:scale-105 hover:shadow-lg" style="max-width: 14rem">
-          <figure>
-            <img style="object-fit: contain" src="/MoneySaver.png">
+
+        <a href="https://github.com/FinWave-App" class="card shadow-xl image-full m-1 transition transform hover:scale-105 hover:shadow-lg" style="max-width: 14rem">
+          <figure class="p-2">
+            <img style="object-fit: contain" src="/FinWave.png">
           </figure>
           <div class="justify-end card-body">
-            <h2 class="card-title">MoneySaver</h2>
+            <h2 class="card-title">FinWave</h2>
             <p>Web application for home financial accounting. Has various charts, plans, repeat transactions and more.</p>
           </div>
         </a>
+
         <a href="https://lab.knrg.su/isKONSTANTIN/LokUtils" class="card shadow-xl image-full m-1 transition transform hover:scale-105 hover:shadow-lg" style="max-width: 14rem">
-          <figure>
+          <figure class="p-2">
             <img style="object-fit: contain" src="/LokUtils.png">
           </figure>
           <div class="justify-end card-body">
@@ -25,8 +27,8 @@
           </div>
         </a>
 
-        <a href="https://hil.su" class="card shadow-xl image-full m-1 transition transform hover:scale-105 hover:shadow-lg" style="max-width: 14rem">
-          <figure>
+        <a href="https://f.hil.su/threads/obnovlenie-hil-ui-2.5085/" class="card shadow-xl image-full m-1 transition transform hover:scale-105 hover:shadow-lg" style="max-width: 14rem">
+          <figure class="p-2">
             <img style="object-fit: contain" src="/hil.png">
           </figure>
           <div class="justify-end card-body">
@@ -35,23 +37,13 @@
           </div>
         </a>
 
-        <a href="https://github.com/isKONSTANTIN/LokPackager" class="card shadow-xl image-full m-1 transition transform hover:scale-105 hover:shadow-lg" style="max-width: 14rem">
-          <figure>
-            <img style="object-fit: contain" src="/LokPackager.png">
+        <a href="https://github.com/isKONSTANTIN/CryptoUtils" class="card shadow-xl image-full m-1 transition transform hover:scale-105 hover:shadow-lg" style="max-width: 14rem">
+          <figure class="p-2">
+            <img style="object-fit: contain" src="/bitcoin.png">
           </figure>
           <div class="justify-end card-body">
-            <h2 class="card-title">LokPackager</h2>
-            <p>Simple binary files packager on Java.</p>
-          </div>
-        </a>
-
-        <a href="https://github.com/isKONSTANTIN/LokEngine" class="card shadow-xl image-full m-1 transition transform hover:scale-105 hover:shadow-lg" style="max-width: 14rem">
-          <figure>
-
-          </figure>
-          <div class="justify-end card-body transition transform hover:scale-105 hover:shadow-lg">
-            <h2 class="card-title">LokEngine</h2>
-            <p>The first attempt to create something complex in terms of architecture. Later it was converted to LokUtils.</p>
+            <h2 class="card-title">CryptoUtils</h2>
+            <p>Terminal program for simple seed generation, encryption, decryption, backup and more.</p>
           </div>
         </a>
 
