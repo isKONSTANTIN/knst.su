@@ -83,7 +83,7 @@ const skills = [
 
 <style scoped>
 .skill {
-  @apply transition-colors rounded-md bg-white bg-opacity-10 backdrop-blur py-1.5 px-3 font-bold text-stone-300 text-lg text-center text-nowrap;
+  @apply transition-colors rounded-md bg-white bg-opacity-10 xl:backdrop-blur py-1.5 px-3 font-bold text-stone-300 text-lg text-center text-nowrap;
 }
 
 .skill:hover {
