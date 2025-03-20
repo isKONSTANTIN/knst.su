@@ -1,26 +1,27 @@
 <template>
-  <div class="mt-5 flex flex-col justify-center items-center w-full">
-    <navbar class="mb-8 w-4/5"></navbar>
-
-    <div class="content">
-      <div class="hiddenPanel">
-        <about-me class="row-span-2"></about-me>
-        <interests></interests>
-        <some-interesting></some-interesting>
-        <some-projects class="row-span-3 xl:col-span-2 mb-2"></some-projects>
-      </div>
-    </div>
+  <div>
+    <navbar class="fixed z-10"></navbar>
+    <me />
+    <finwave />
+    <telegram-ai />
+    <hilui />
+    <crypto-utils />
+    <afterwords />
   </div>
 </template>
 
-<script>
-import Navbar from "../components/navbar";
-import AboutMe from "../components/aboutMe";
-import Interests from "../components/interests";
-import SomeProjects from "../components/someProjects";
-import SomeInteresting from "../components/someInteresting";
-export default {
-  name: 'IndexPage',
-  components: {SomeInteresting, SomeProjects, Interests, AboutMe, Navbar}
-}
+<script setup>
+
+import Me from "~/components/screens/me.vue";
+import Finwave from "~/components/screens/finwave.vue";
+import TelegramAi from "~/components/screens/telegram-ai.vue";
+import Hilui from "~/components/screens/hilui.vue";
+import CryptoUtils from "~/components/screens/crypto-utils.vue";
+import Afterwords from "~/components/screens/afterwords.vue";
 </script>
+
+<style scoped>
+
+
+
+</style>

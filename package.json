@@ -1,24 +1,23 @@
 {
   "name": "knst.su",
-  "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate"
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "core-js": "^3.19.3",
-    "daisyui": "^1.17.1",
-    "nuxt": "^2.15.8",
-    "vue": "^2.6.14",
-    "vue-server-renderer": "^2.6.14",
-    "vue-template-compiler": "^2.6.14",
-    "webpack": "^4.46.0"
+    "@nuxt/image": "^1.10.0",
+    "nuxt": "^3.16.1",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.3.2",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^4.2.1",
-    "postcss": "^8.4.4"
+    "daisyui": "^4.12.24"
   }
 }

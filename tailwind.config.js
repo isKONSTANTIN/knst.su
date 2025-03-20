@@ -1,12 +1,30 @@
+/** @type {import('tailwindcss').Config} */
+
 module.exports = {
-  purge: [],
-  theme: {
-    extend: {},
-  },
-  variants: {
-    extend: {},
-  },
-  plugins: [
-    require('daisyui'),
+  content: [
+    "./components/**/*.{js,vue,ts}",
+    "./layouts/**/*.vue",
+    "./pages/**/*.vue",
+    "./plugins/**/*.{js,ts}",
+    "./nuxt.config.{js,ts}",
+    "./app.vue",
   ],
+
+  safelist: [
+  ],
+
+  theme: {
+  },
+
+  plugins: [
+      require("daisyui"),
+  ],
+
+  daisyui: {
+    themes: [
+      'light',
+      'dark',
+    ],
+  },
 }
+
