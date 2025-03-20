@@ -3,7 +3,7 @@
     <div class="hero-overlay bg-opacity-0"></div>
     <div class="hero-content flex-col xl:flex-row xl:justify-between w-11/12 xl:items-start gap-16">
       <div class="max-w-md">
-        <div class="text-5xl xl:text-6xl font-extrabold text-stone-200 text-center xl:text-left">
+        <div class="text-5xl xl:text-6xl font-extrabold text-stone-200 text-center xl:text-left mt-16 xl:mt-0">
           Hello, I'm
           <div class="shine">Konstantin</div>
         </div>
@@ -71,11 +71,8 @@ const skills = [
   "Docker",
   "Proxmox",
   "Nginx",
-  "Linux",
-  "Gnome",
   "Ray Marching",
   "OpenGL",
-  "Gitlab",
   "CI/CD",
   "LWJGL",
   "AI"

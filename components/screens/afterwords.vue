@@ -15,17 +15,17 @@
                   No! The above projects are interesting, but there are more noteworthy creations:
                 </div>
 
-                <div class="mt-2 font-bold text-center xl:text-left">
+                <div class="mt-4 xl:mt-2 font-bold text-center xl:text-left">
                   <nuxt-link to="https://github.com/FinWave-App/Reactive-Configs-Tool" class="text-blue-400 hover:underline">The Reactive Configs Tool</nuxt-link>:
                   offers a dynamic approach to managing configuration files in Java, enabling real-time updates without restarting applications.
                 </div>
 
-                <div class="font-bold text-center xl:text-left">
+                <div class="mt-2 xl:mt-0 font-bold text-center xl:text-left">
                   <nuxt-link to="https://github.com/FinWave-App/Telegram-Abstractions-Tools" class="text-blue-400 hover:underline">Telegram Abstractions Tools</nuxt-link>:
                   simplifies Telegram bot development by providing an intuitive abstraction layer for handling bot contexts.
                 </div>
 
-                <div class="font-bold text-center xl:text-left">
+                <div class="mt-2 xl:mt-0 font-bold text-center xl:text-left">
                   <nuxt-link to="https://github.com/isKONSTANTIN/LokUtils" class="text-blue-400 hover:underline">LokUtils</nuxt-link>:
                   is a Java library I developed to streamline the creation of high-performance GUIs using OpenGL.
                 </div>
@@ -36,7 +36,7 @@
               </div>
             </div>
 
-            <div class="flex gap-2 mt-8">
+            <div class="flex gap-2 mt-5 flex-wrap justify-center items-center xl:justify-start">
               <nuxt-link to="#main" class="btn">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                   <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 18.75 7.5-7.5 7.5 7.5" />

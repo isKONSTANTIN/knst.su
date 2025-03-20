@@ -49,7 +49,7 @@
 
             <div class="flex xl:w-1/2 items-center justify-center">
               <div>
-                <img src="/finwave-logo.svg" class="w-96 max-h-72 xl:max-h-96" alt="FinWave logo view"/>
+                <img src="/finwave-logo.svg" class="w-64 max-h-72 xl:max-h-96 xl:w-96" alt="FinWave logo view"/>
               </div>
             </div>
           </div>
