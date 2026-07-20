@@ -6,7 +6,7 @@
       </p>
       <div class="flex flex-col gap-1 flex-wrap">
         <p class="opacity-60 font-bold text-sm">
-          Copyright © 2025 isKONSTANTIN 🌈
+          Copyright © {{ year }} isKONSTANTIN 🌈
         </p>
         <nuxt-link to="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="opacity-60 font-bold text-sm underline">It's a rickroll. Don't click on it!!!</nuxt-link>
       </div>
@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-
+const year = new Date().getFullYear()
 </script>
 
 <style scoped>

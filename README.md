@@ -1,75 +1,35 @@
-# Nuxt Minimal Starter
+# knst.su
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Personal site of Konstantin (isKONSTANTIN) — a single-page portfolio built with Nuxt 3.
 
-## Setup
+## Stack
 
-Make sure to install dependencies:
+- **Nuxt 3** (Vue 3), `ssr: false` — statically generated SPA
+- **Tailwind CSS + daisyUI** (`dark` theme)
+- **GSAP + ScrollTrigger** for the hero load-in timeline, per-section scroll animations, and background parallax
+- **@nuxt/image** for optimized images, **@nuxt/fonts** for self-hosted Space Grotesk / Inter
+
+## Development
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
 ## Production
 
-Build the application for production:
+The site is deployed as a static build served by Nitro's Node server:
 
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+npm run generate   # outputs .output/public + .output/server
 ```
 
-Locally preview production build:
+`Dockerfile` copies `.output/` and runs `node server/index.mjs`. CI (`.github/workflows/build.yml`) builds this on every push to `main` and publishes a Docker image to `ghcr.io/iskonstantin/knst.su`.
 
-```bash
-# npm
-npm run preview
+## Structure
 
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- `pages/index.vue` — the only route; assembles section components
+- `components/screens/*.vue` — hero (`me.vue`) and project sections
+- `components/ProjectSection.vue` — shared template for project sections (layout, background, GSAP timeline)
+- `components/icons/*.vue`, `components/ui/GlassButton.vue` — shared, globally auto-imported building blocks
+- `composables/useParallax.ts` — scroll-linked parallax tween, called from within a component's `gsap.context()`

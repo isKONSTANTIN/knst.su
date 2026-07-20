@@ -2,6 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-    scroll-behavior: smooth;
+@layer base {
+  body {
+    @apply font-sans;
+  }
+
+  h1, h2, h3 {
+    font-family: theme('fontFamily.display');
+  }
+}
+
+@layer components {
+  /* Shared dark-scrim-+-blur surface used by buttons and tag pills. Named
+     "scrim" (not "glass") to avoid colliding with daisyUI's own built-in
+     `.glass` utility class.
+     `!` (important) is needed because daisyUI's `.btn.btn-ghost` (two
+     classes) otherwise outranks a single-class `.scrim` selector. */
+  .scrim {
+    @apply !bg-ink-950/35 !backdrop-blur-lg !border-0 transition-colors duration-200;
+  }
+
+  .scrim-interactive {
+    @apply scrim hover:!bg-ink-950/55;
+  }
+
+  /* Stronger variant for the navbar, which sits directly over busy
+     hero imagery and needs to stay legible regardless of what's behind it. */
+  .scrim-strong {
+    @apply !bg-ink-950/45 !backdrop-blur-xl !border-0 transition-colors duration-200;
+  }
 }
