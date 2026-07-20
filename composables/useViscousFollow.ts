@@ -123,6 +123,25 @@ export function useViscousFollow(
 
     let pendingCall: gsap.core.Tween | null = null
     let latestProgress = 0
+    let painted = false
+
+    /**
+     * Re-measures and moves the content to wherever `p` says it belongs. The
+     * first call snaps (so a section already scrolled past at mount doesn't
+     * flash at y: 0 before its first scroll event); later ones — after a resize
+     * or any other refresh — ease, so a layout change doesn't teleport content.
+     */
+    const paint = (p: number) => {
+      measure()
+      latestProgress = p
+
+      if (painted) {
+        quickY(valueAt(p))
+      } else {
+        painted = true
+        gsap.set(target, { y: valueAt(p) })
+      }
+    }
 
     const st = ScrollTrigger.create({
       trigger: scroller,
@@ -132,7 +151,7 @@ export function useViscousFollow(
       // image finally arriving). Without this, `distance` stayed frozen at
       // whatever the layout looked like at mount while `end` kept updating.
       invalidateOnRefresh: true,
-      onRefresh: measure,
+      onRefresh: (self) => paint(self.progress),
       onUpdate: (self) => {
         latestProgress = self.progress
         if (pendingCall) return
@@ -144,13 +163,14 @@ export function useViscousFollow(
       },
     })
 
-    measure()
-
-    // Paint the correct rise/settle position immediately instead of waiting for
-    // the first throttled sample, so a section already past 'top bottom' at
-    // mount doesn't flash at y: 0 before its first scroll event.
-    latestProgress = st.progress
-    gsap.set(target, { y: valueAt(st.progress) })
+    // The initial paint normally happens in onRefresh, which ScrollTrigger runs
+    // while creating the trigger. But when this callback is re-entered on a
+    // resize back across the breakpoint, that refresh can still be in flight,
+    // and `st.progress` is 0 until it lands — which would read as "section
+    // hasn't arrived yet" and slam the content a full RISE_DISTANCE off screen
+    // until the next scroll event nudged it back.
+    if (!painted) st.refresh()
+    if (!painted) paint(st.progress)
 
     // The throttle's delayedCall is created inside onUpdate — outside the
     // synchronous scope this callback runs in — so gsap's context never sees

@@ -2,7 +2,6 @@ import { seo } from './data/site'
 
 export default defineNuxtConfig({
   ssr: false,
-
   css: ['~/assets/css/main.css'],
 
   app: {
@@ -59,4 +58,6 @@ export default defineNuxtConfig({
       { name: 'Inter', provider: 'google' },
     ],
   },
+
+  compatibilityDate: '2026-07-20',
 })
