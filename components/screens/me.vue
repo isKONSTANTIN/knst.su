@@ -13,12 +13,12 @@
     <div class="absolute inset-0 -z-10 bg-ink-950/10"></div>
 
     <div ref="contentEl" class="hero-content flex-col xl:flex-row xl:justify-between w-11/12 xl:items-start gap-16">
-      <div class="max-w-md">
-        <div ref="headlineEl" class="opacity-0 font-display text-5xl xl:text-6xl font-extrabold text-stone-100 text-center xl:text-left mt-16 xl:mt-0">
-          Hi, I'm
-          <div class="shine">Konstantin</div>
+      <div class="max-w-xl">
+        <div ref="headlineEl" class="opacity-0 font-display text-3xl xl:text-7xl font-super-bold text-stone-100 text-center xl:text-left mt-16 xl:mt-0">
+          <p>Hi, I'm</p>
+          <p class="shine text-nowrap">Konstantin</p>
         </div>
-        <p ref="copyEl" class="opacity-0 mt-5 font-medium text-stone-200 text-center xl:text-left">
+        <p ref="copyEl" class="opacity-0 mt-5 text-stone-200 text-center xl:text-left max-w-md font-bold">
           A fullstack developer. I build products end-to-end and I'm genuinely into solving real business problems, not just shipping code.
         </p>
 
@@ -126,7 +126,7 @@ onMounted(async () => {
     const bgEl = bgImageEl.value?.$el ?? bgImageEl.value
     if (bgEl) useScrollParallax(bgEl, rootEl.value, 15)
 
-    useViscousFollow(contentEl.value, rootEl.value)
+    useViscousFollow(contentEl.value, rootEl.value, { rise: false })
   }, rootEl.value)
 })
 
@@ -169,4 +169,9 @@ onUnmounted(() => {
   background-size: 500% auto;
   animation: textShine 5s ease-in-out infinite;
 }
+
+.font-super-bold {
+  font-weight: 1000;
+}
+
 </style>

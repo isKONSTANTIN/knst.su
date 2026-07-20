@@ -50,7 +50,8 @@
               v-if="image.src.endsWith('.svg')"
               :src="image.src"
               :alt="image.alt"
-              class="w-72 h-72 xl:h-96 xl:w-96"
+              :width="image.width"
+              :height="image.height"
             />
             <NuxtImg
               v-else
@@ -114,8 +115,26 @@ onMounted(async () => {
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: rootEl.value,
-        start: 'top 15%',
+        // Triggers off contentEl, not rootEl: rootEl is the whole
+        // min-h-screen section, which can grow much taller than the
+        // viewport once content stacks on narrow screens (hero centers
+        // it inside that oversized box). Timing off the section's outer
+        // edge then fires while the actual visible content is still far
+        // below, deep inside the empty space above it. contentEl is the
+        // actual text/image block, so its own top tracks where the
+        // content really starts appearing, independent of how tall the
+        // surrounding section grows.
+        // A flat px offset, not a percentage of either the viewport or
+        // contentEl: viewport height swings widely across devices
+        // (mobile vs. 2K), and contentEl's own height swings just as
+        // much between stacked-on-narrow and side-by-side-on-wide
+        // layouts — either as a percentage base made the effective
+        // buffer wildly inconsistent (too early on some sizes, too late
+        // on others). Same lesson as riseDistance/maxDistance in
+        // useViscousFollow: a fixed px amount is the one thing that
+        // doesn't move around underneath us.
+        trigger: contentEl.value,
+        start: 'top bottom-=400',
         toggleActions: 'play none none reverse',
       },
       defaults: { ease: 'sine.out' },
