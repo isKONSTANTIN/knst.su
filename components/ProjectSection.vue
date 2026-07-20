@@ -39,14 +39,14 @@
         <div ref="triggerEl" class="hero-content w-11/12">
           <div ref="contentEl" class="flex flex-col items-center xl:flex-row xl:justify-between w-full gap-16">
             <div class="text-center xl:text-left flex flex-col justify-center items-center xl:items-start max-w-md">
-              <div ref="titleEl" class="opacity-0 font-display text-3xl xl:text-5xl font-bold text-stone-100">
+              <div ref="titleEl" class="opacity-0 font-display text-5xl xl:text-6xl font-bold text-stone-100">
                 {{ title }}
               </div>
 
-              <p ref="descEl" class="opacity-0 mt-6 font-medium text-stone-200 max-w-lg">{{ description }}</p>
+              <p ref="descEl" class="opacity-0 mt-6 font-bold text-stone-200 max-w-lg text-lg">{{ description }}</p>
               <p v-if="stack" ref="stackEl" class="opacity-0 mt-2 text-stone-300/80">{{ stack }}</p>
 
-              <div ref="linksWrapEl" class="opacity-0 flex gap-2 mt-5 flex-wrap justify-center items-center xl:justify-start">
+              <div ref="linksWrapEl" class="opacity-0 flex gap-2 mt-5 w-full flex-wrap justify-center items-center xl:justify-start">
                 <GlassButton v-for="link in links" :key="link.href" :to="link.href">
                   <template #icon>
                     <component :is="link.icon" />

@@ -6,7 +6,13 @@
           <IconMenu />
         </div>
 
-        <MenuItems tabindex="0" class="menu menu-compact dropdown-content p-2 px-2 gap-1 scrim-strong rounded-box w-52" />
+        <!-- daisyUI animates .dropdown-content open/close via `transform: scale()`.
+             Chromium doesn't paint `backdrop-filter` on an element that also has a
+             `transform`, so the blur has to live on an untransformed child instead
+             of directly on the `dropdown-content` element. -->
+        <div tabindex="0" class="dropdown-content w-52 rounded-box z-1 p-2">
+          <MenuItems class="menu menu-compact bg-base-100 z-10 p-2 px-2 gap-1 rounded-box" />
+        </div>
       </div>
 
       <div class="hidden md:flex w-full justify-center">

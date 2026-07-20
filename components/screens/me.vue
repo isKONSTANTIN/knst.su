@@ -14,28 +14,28 @@
 
     <div ref="contentEl" class="hero-content flex-col xl:flex-row xl:justify-between w-11/12 xl:items-start gap-16">
       <div class="max-w-xl">
-        <div ref="headlineEl" class="opacity-0 font-display text-3xl xl:text-7xl font-super-bold text-stone-100 text-center xl:text-left mt-16 xl:mt-0">
-          <p>Hi, I'm</p>
+        <div ref="headlineEl" class="opacity-0 font-display text-5xl xl:text-7xl font-super-bold text-stone-100 text-center xl:text-left mt-16 xl:mt-0">
+          <p class="leading-9 xl:leading-none">Hi, I'm</p>
           <p class="shine text-nowrap">Konstantin</p>
         </div>
-        <p ref="copyEl" class="opacity-0 mt-5 text-stone-200 text-center xl:text-left max-w-md font-bold">
+        <p ref="copyEl" class="opacity-0 mt-5 text-stone-200 text-center xl:text-left max-w-md font-bold text-lg leading-6">
           A fullstack developer. I build products end-to-end and I'm genuinely into solving real business problems, not just shipping code.
         </p>
 
-        <div ref="ctaWrapEl" class="opacity-0 flex gap-2 mt-5 flex-wrap justify-center items-center xl:justify-start">
+        <div ref="ctaWrapEl" class="opacity-0 flex gap-2 mt-5 w-full flex-wrap justify-center items-center xl:justify-start">
           <GlassButton to="#finwave">
             <template #icon><IconBriefcase class="size-5" stroke-width="2" /></template>
-            My Projects
+            <p class="text-sm">My Projects</p>
           </GlassButton>
 
           <GlassButton :to="contacts.github">
             <template #icon><IconGithub /></template>
-            My Github
+            <p class="text-sm">My Github</p>
           </GlassButton>
 
           <GlassButton :to="contacts.telegram">
             <template #icon><IconTelegram /></template>
-            My Telegram
+            <p class="text-sm">My Telegram</p>
           </GlassButton>
         </div>
       </div>

@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     :to="to"
-    class="btn btn-ghost scrim-interactive text-stone-200 flex-1 flex-nowrap text-nowrap gap-2"
+    class="btn btn-ghost no-animation scrim-interactive text-stone-200 flex-1 flex-nowrap text-nowrap gap-2"
   >
     <span class="shrink-0 inline-flex">
       <slot name="icon" />
