@@ -24,20 +24,16 @@
 
         <div ref="ctaWrapEl" class="opacity-0 flex gap-2 mt-5 flex-wrap justify-center items-center xl:justify-start">
           <GlassButton to="#finwave">
-            <template #icon>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-              </svg>
-            </template>
+            <template #icon><IconBriefcase class="size-5" stroke-width="2" /></template>
             My Projects
           </GlassButton>
 
-          <GlassButton to="https://github.com/isKONSTANTIN/">
+          <GlassButton :to="contacts.github">
             <template #icon><IconGithub /></template>
             My Github
           </GlassButton>
 
-          <GlassButton to="https://t.me/cotantin">
+          <GlassButton :to="contacts.telegram">
             <template #icon><IconTelegram /></template>
             My Telegram
           </GlassButton>
@@ -49,7 +45,7 @@
           Interests
         </p>
         <div ref="skillsWrapEl" class="opacity-0 flex gap-2 mt-3 flex-wrap">
-          <div class="flex-1" v-for="skill in skills" :key="skill">
+          <div v-for="skill in skills" :key="skill" class="flex-1">
             <div class="skill">
               {{ skill }}
             </div>
@@ -61,81 +57,77 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { gsap } from 'gsap'
+import { contacts, skills } from '~/data/site'
 
-const skills = ref([
-  "Java",
-  "Go",
-  "Nuxt",
-  "TypeScript",
-  "Jooq",
-  "PostgreSQL",
-  "Prometheus",
-  "Grafana",
-  "PWA",
-  "LXC",
-  "Docker",
-  "Proxmox",
-  "Nginx",
-  "Ray Marching",
-  "OpenGL",
-  "CI/CD",
-  "LWJGL",
-  "AI"
-]);
+const rootEl = ref<HTMLElement | null>(null)
+const contentEl = ref<HTMLElement | null>(null)
+const bgImageEl = ref<HTMLElement | null>(null)
+const headlineEl = ref<HTMLElement | null>(null)
+const copyEl = ref<HTMLElement | null>(null)
+const ctaWrapEl = ref<HTMLElement | null>(null)
+const interestsHeadingEl = ref<HTMLElement | null>(null)
+const skillsWrapEl = ref<HTMLElement | null>(null)
+const andMoreEl = ref<HTMLElement | null>(null)
 
-const rootEl = ref(null)
-const contentEl = ref(null)
-const bgImageEl = ref(null)
-const headlineEl = ref(null)
-const copyEl = ref(null)
-const ctaWrapEl = ref(null)
-const interestsHeadingEl = ref(null)
-const skillsWrapEl = ref(null)
-const andMoreEl = ref(null)
+/**
+ * Containers start hidden behind a static `opacity-0` class so nothing flashes
+ * fully-visible between first paint and the timeline starting (fonts loading
+ * plus the timeline's own delay can take a while). They get un-hidden in the
+ * same tick the fromTo calls below make their actual reveal targets invisible.
+ */
+const revealTargets = () =>
+  [headlineEl.value, copyEl.value, ctaWrapEl.value, interestsHeadingEl.value, skillsWrapEl.value, andMoreEl.value]
+    .filter((el): el is HTMLElement => el !== null)
 
-let ctx
-let splits = []
+let ctx: gsap.Context | undefined
+/** Guards against the component unmounting while `document.fonts.ready` is still pending. */
+let alive = true
 
 onMounted(async () => {
   await document.fonts?.ready
+  if (!alive) return
 
-  ctx = gsap.context(() => {
-    const headlineSplit = splitChars(headlineEl.value)
-    const copySplit = splitWords(copyEl.value)
-    splits.push(headlineSplit, copySplit)
+  try {
+    ctx = gsap.context(() => {
+      const headlineSplit = splitChars(headlineEl.value!)
+      const copySplit = splitWords(copyEl.value!)
 
-    // The containers were hidden via a static `opacity-0` class so nothing
-    // flashes fully-visible between first paint and this point (fonts
-    // loading + the timeline's own delay can take a while). Un-hide the
-    // containers now — in the same tick — while the actual reveal targets
-    // (chars/words/children, set up below via fromTo) stay individually
-    // invisible until the timeline animates them in.
-    gsap.set([headlineEl.value, copyEl.value, ctaWrapEl.value, interestsHeadingEl.value, skillsWrapEl.value, andMoreEl.value], { opacity: 1 })
+      gsap.set(revealTargets(), { opacity: 1 })
 
-    const tl = gsap.timeline({ delay: 0.6, defaults: { ease: 'sine.out' } })
+      const tl = gsap.timeline({ delay: 0.6, defaults: { ease: 'sine.out' } })
 
-    tl.fromTo(headlineSplit.chars, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.02 })
-      .fromTo(copySplit.words, { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.012 }, '-=0.25')
-      .fromTo(ctaWrapEl.value.children, { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.08 }, '-=0.2')
-      .fromTo(interestsHeadingEl.value, { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.5 }, '-=0.35')
-      .fromTo(skillsWrapEl.value.children, { autoAlpha: 0, scale: 0.85 }, { autoAlpha: 1, scale: 1, duration: 0.5, stagger: 0.02 }, '-=0.3')
-      .fromTo(andMoreEl.value, { autoAlpha: 0, y: 4 }, { autoAlpha: 0.6, y: 0, duration: 0.4 })
+      tl.fromTo(headlineSplit.chars, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.02 })
+        .fromTo(copySplit.words, { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.012 }, '-=0.25')
+        .fromTo(ctaWrapEl.value!.children, { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.08 }, '-=0.2')
+        .fromTo(interestsHeadingEl.value!, { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.5 }, '-=0.35')
+        .fromTo(skillsWrapEl.value!.children, { autoAlpha: 0, scale: 0.85 }, { autoAlpha: 1, scale: 1, duration: 0.5, stagger: 0.02 }, '-=0.3')
+        .fromTo(andMoreEl.value!, { autoAlpha: 0, y: 4 }, { autoAlpha: 0.6, y: 0, duration: 0.4 })
 
-    const bgEl = bgImageEl.value?.$el ?? bgImageEl.value
-    if (bgEl) useScrollParallax(bgEl, rootEl.value, 15)
+      if (bgImageEl.value) useScrollParallax(bgImageEl.value, rootEl.value!)
 
-    useViscousFollow(contentEl.value, rootEl.value, { rise: false })
-  }, rootEl.value)
+      // No rise phase: the hero is on screen from first paint, so there's no
+      // "not yet arrived" state for it to anticipate.
+      useViscousFollow(contentEl.value!, rootEl.value!, { rise: false })
+    }, rootEl.value!)
+  } catch (err) {
+    // With ssr: false there is no non-JS render path, so a thrown animation
+    // would otherwise leave the hero permanently blank behind opacity-0.
+    console.error('[me] hero reveal failed, showing content unanimated', err)
+    ctx?.revert()
+    ctx = undefined
+    gsap.set(revealTargets(), { opacity: 1, visibility: 'visible' })
+  }
 })
 
 onUnmounted(() => {
+  alive = false
+  // SplitText instances register themselves with the active context, so
+  // reverting it undoes the splits too.
   ctx?.revert()
-  splits.forEach((s) => s?.revert())
 })
 </script>
-
 
 <style scoped>
 .skill {
@@ -173,5 +165,4 @@ onUnmounted(() => {
 .font-super-bold {
   font-weight: 1000;
 }
-
 </style>

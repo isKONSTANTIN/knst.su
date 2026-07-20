@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link
+  <NuxtLink
     :to="to"
     class="btn btn-ghost scrim-interactive text-stone-200 flex-1 flex-nowrap text-nowrap gap-2"
   >
@@ -7,14 +7,9 @@
       <slot name="icon" />
     </span>
     <slot />
-  </nuxt-link>
+  </NuxtLink>
 </template>
 
-<script setup>
-defineProps({
-  to: {
-    type: String,
-    required: true,
-  },
-})
+<script setup lang="ts">
+defineProps<{ to: string }>()
 </script>

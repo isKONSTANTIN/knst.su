@@ -1,11 +1,6 @@
-import { NuxtConfig } from '@nuxt/types'
+import { seo } from './data/site'
 
-const SEO_TITLE = 'knst.su'
-const SEO_DESCRIPTION = "Konstantin (isKONSTANTIN) — fullstack developer. A portfolio of real products, built end-to-end."
-const SEO_URL = 'https://knst.su'
-const SEO_IMAGE = `${SEO_URL}/og-image.jpg`
-
-const config: NuxtConfig = {
+export default defineNuxtConfig({
   ssr: false,
 
   css: ['~/assets/css/main.css'],
@@ -14,26 +9,30 @@ const config: NuxtConfig = {
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      title: SEO_TITLE,
+      title: seo.title,
+      // Crawlers (Telegram/Twitter/Discord unfurlers) don't execute JS, so the
+      // tags that matter for link previews have to live here — this is what
+      // gets baked into the static output.
       meta: [
-        { name: 'description', content: SEO_DESCRIPTION },
+        { name: 'description', content: seo.description },
         { property: 'og:type', content: 'website' },
-        { property: 'og:title', content: SEO_TITLE },
-        { property: 'og:description', content: SEO_DESCRIPTION },
-        { property: 'og:url', content: SEO_URL },
-        { property: 'og:image', content: SEO_IMAGE },
+        { property: 'og:title', content: seo.title },
+        { property: 'og:description', content: seo.description },
+        { property: 'og:url', content: seo.url },
+        { property: 'og:image', content: seo.image },
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: SEO_TITLE },
-        { name: 'twitter:description', content: SEO_DESCRIPTION },
-        { name: 'twitter:image', content: SEO_IMAGE },
+        { name: 'twitter:title', content: seo.title },
+        { name: 'twitter:description', content: seo.description },
+        { name: 'twitter:image', content: seo.image },
       ],
-    }
+    },
   },
 
   router: {
     options: {
-      scrollBehaviorType: 'smooth'
-    }
+      // Handles the `to="#section"` anchor links in the navbar.
+      scrollBehaviorType: 'smooth',
+    },
   },
 
   components: [
@@ -60,19 +59,4 @@ const config: NuxtConfig = {
       { name: 'Inter', provider: 'google' },
     ],
   },
-
-  runtimeConfig: {
-    public: {
-    },
-  },
-
-  // TEMPORARY: allows viewing the dev server through a localtunnel URL
-  // while testing remotely. Revert this before committing.
-  vite: {
-    server: {
-      allowedHosts: true,
-    },
-  },
-}
-
-export default config
+})

@@ -8,16 +8,12 @@
         <p class="opacity-60 font-bold text-sm">
           Copyright © {{ year }} isKONSTANTIN 🌈
         </p>
-        <nuxt-link to="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="opacity-60 font-bold text-sm underline">It's a rickroll. Don't click on it!!!</nuxt-link>
+        <NuxtLink to="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="opacity-60 font-bold text-sm underline">It's a rickroll. Don't click on it!!!</NuxtLink>
       </div>
     </div>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const year = new Date().getFullYear()
 </script>
-
-<style scoped>
-
-</style>
