@@ -11,13 +11,10 @@
       />
       <template v-else-if="background.type === 'image'">
         <div class="absolute inset-0 -z-10 overflow-hidden">
-          <NuxtImg
+          <img
             ref="bgImageEl"
             :src="background.src"
             class="h-[135%] w-[120%] max-w-none -ml-[10%] object-cover"
-            format="webp"
-            quality="100"
-            width="2560"
             loading="eager"
             alt=""
           />
@@ -71,13 +68,12 @@
                 :height="image.height"
                 class="w-72 h-72 xl:w-96 xl:h-96"
               />
-              <NuxtImg
+              <img
                 v-else
                 :src="image.src"
                 :alt="image.alt"
                 :width="image.width"
                 :height="image.height"
-                format="webp"
                 loading="lazy"
                 class="max-w-72 max-h-72 xl:max-h-96 xl:max-w-96 w-auto h-auto"
                 :class="image.rounded ? 'rounded-3xl' : ''"
@@ -106,7 +102,7 @@ const descEl = ref<HTMLElement | null>(null)
 const stackEl = ref<HTMLElement | null>(null)
 const linksWrapEl = ref<HTMLElement | null>(null)
 const imageWrapEl = ref<HTMLElement | null>(null)
-const bgImageEl = ref<{ $el?: HTMLElement } | HTMLElement | null>(null)
+const bgImageEl = ref<HTMLElement | null>(null)
 
 /**
  * Containers start hidden behind a static `opacity-0` class so nothing flashes
@@ -160,8 +156,7 @@ onMounted(async () => {
         .fromTo(imageWrapEl.value!, { autoAlpha: 0, scale: 0.96 }, { autoAlpha: 1, scale: 1, duration: 0.9, ease: 'power1.out' }, '<0.1')
 
       if (props.background.type === 'image' && bgImageEl.value) {
-        const el = ('$el' in bgImageEl.value ? bgImageEl.value.$el : bgImageEl.value) as HTMLElement
-        useScrollParallax(el, rootEl.value!)
+        useScrollParallax(bgImageEl.value, rootEl.value!)
       }
 
       useViscousFollow(contentEl.value!, rootEl.value!)

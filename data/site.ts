@@ -27,10 +27,10 @@ export const contacts = {
   email: 'mailto:me@knst.su',
 } as const
 
-const url = 'https://knst.su'
+const url = 'https://knst.cc'
 
 export const seo = {
-  title: 'knst.su',
+  title: 'knst.cc',
   description: 'Konstantin (isKONSTANTIN) — fullstack developer. A portfolio of real products, built end-to-end.',
   url,
   image: `${url}/og-image.jpg`,
