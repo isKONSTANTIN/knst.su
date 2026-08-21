@@ -137,22 +137,30 @@ onUnmounted(() => {
   @apply !backdrop-blur-none sm:!backdrop-blur-lg;
 }
 
+/* Position runs 100% -> 0% so the background image travels rightward relative
+   to the text, sweeping the highlight band across "Konstantin" left-to-right.
+   The gradient below is mirrored to match — see the note there. */
 @keyframes textShine {
   0% {
-    background-position: 0% 50%;
+    background-position: 100% 50%;
   }
   100% {
-    background-position: 100% 50%;
+    background-position: 0% 50%;
   }
 }
 
 .shine {
+  /* The band is asymmetric — a hard white->cyan->indigo edge followed by a
+     long fade back to white — so flipping the sweep direction means mirroring
+     the stops too (p -> 100-p, in reverse order), otherwise the soft tail
+     leads and the bright edge trails. The angle stays put: reflecting it as
+     well would be a second mirror, cancelling the first. */
   background: linear-gradient(
       60deg,
-      #f5f5f4 39%,
-      #22d3ee 40%,
-      #4f46e5 41%,
-      #f5f5f4 51%
+      #f5f5f4 49%,
+      #4f46e5 59%,
+      #22d3ee 60%,
+      #f5f5f4 61%
   );
   -webkit-background-clip: text;
   background-clip: text;

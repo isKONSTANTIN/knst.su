@@ -2,7 +2,7 @@ import { seo } from './data/site'
 
 export default defineNuxtConfig({
   ssr: false,
-  css: ['~/assets/css/main.css'],
+  css: ['lenis/dist/lenis.css', '~/assets/css/main.css'],
 
   app: {
     head: {
@@ -24,13 +24,6 @@ export default defineNuxtConfig({
         { name: 'twitter:description', content: seo.description },
         { name: 'twitter:image', content: seo.image },
       ],
-    },
-  },
-
-  router: {
-    options: {
-      // Handles the `to="#section"` anchor links in the navbar.
-      scrollBehaviorType: 'smooth',
     },
   },
 
