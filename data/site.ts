@@ -24,7 +24,7 @@ export type IconName =
 export const contacts = {
   github: 'https://github.com/isKONSTANTIN/',
   telegram: 'https://t.me/cotantin',
-  email: 'mailto:me@knst.su',
+  email: 'mailto:me@knst.cc',
 } as const
 
 const url = 'https://knst.cc'
